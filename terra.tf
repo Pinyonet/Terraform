@@ -10,8 +10,16 @@ resource "aws_instance" "nginx-server" {
 
 
   tags = {
-    name = "terraform-demo"
+
+    Name = "terraform-demo"
+    Enviroment = "Test"
+    Owner = "hector@tecnologeando.com"
+    Team = "SysAdmin"
+    Project = "Tutorial"
+
   }
+
+
   vpc_security_group_ids = ["sg-0d46bbb050b90a91a"]
   subnet_id             = "subnet-0339e03548da3f417"
 
@@ -29,4 +37,14 @@ key_name = aws_key_pair.nginx-server-ssh.key_name
 resource "aws_key_pair" "nginx-server-ssh" {
   key_name = "nginx-server-ssh"
   public_key = file("nginx-server.key.pub")
+
+    tags = {
+    
+    Name = "terraform-demo-ssh"
+    Enviroment = "Test"
+    Owner = "hector@tecnologeando.com"
+    Team = "SysAdmin"
+    Project = "Tutorial"
+
+  }
 }
